@@ -16,9 +16,6 @@
         我总觉得咱俩不会吵架，咱俩性格互补嘛，不知道你怎么想的，反正你很了解我。😜
         我不管明天怎么样，反正我现在很喜欢你，想娶你，明天大概也会，后天也会吧，大概忒持续好长好长时间，长到你烦了。🙄🙄🙄🙄🙄🙄🙄🙄🙄
       </div>
-      <h1 v-if="isshow">你再皮？</h1>
-      <br/>
-      <img v-if="isshow" src="http://123.206.93.200/images/wife2.jpg">
       <br/><br/>
       <img @click="addto" src="http://123.206.93.200/images/wife1.jpg">
     </div>
@@ -26,22 +23,6 @@
 
 <script>
     export default {
-        data(){
-          return {
-            to:0,
-            isshow:false
-          }
-        },methods:{
-          addto(){
-            this.to++
-          }
-      },watch:{
-        'to'(){
-          if(this.to>10){
-            this.isshow = true;
-          }
-        }
-      }
     }
 </script>
 
