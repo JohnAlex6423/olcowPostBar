@@ -3,6 +3,9 @@
     <h1>待开发</h1>
     <br/>
     <img @click="addto" src="http://123.206.93.200/images/支付宝.png"/>
+    <h3>源码已上传，有兴趣可以自行查看：</h3>
+    <a href="https://github.com/JohnAlex6423/Vue-" target="_blank">https://github.com/JohnAlex6423/Vue-</a>
+    <h3 style="margin-bottom: 55px">有问题联系QQ642385985</h3>
   </div>
 </template>
 

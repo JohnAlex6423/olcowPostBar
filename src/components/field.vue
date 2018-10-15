@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-on="http://www.w3.org/1999/xhtml">
   <div style="margin-right: 5px;margin-left: 5px">
     <label style="margin-top: 10px">标题</label>
     <textarea @click="isshow=false" placeholder="输入标题，最多30个字" maxlength="30" v-model="name"></textarea>
@@ -8,7 +8,7 @@
     <div style="">
       <span @click="isshow=!isshow" style="font-size: 25px;float: left;margin-top: -10px;margin-right: 30px">😁</span>
       <span class="glyphicon glyphicon-picture" style="font-size: 25px;float: left;overflow: hidden;color: gray;margin-top: -14px;width: 30px">
-      <input v-on:input="filess" formenctype="multipart/form-data" ref="files" type="file" multiple="multiple" accept="image/*" style="position: absolute;right: 0px;top: 0px;opacity: 0;">
+      <input @change="filess" ref="file" type="file" multiple="multiple" accept="image/*" style="position: absolute;right: 0px;top: 0px;opacity: 0;">
       </span>
       <span v-if="srcshow" style="font-size: 15px;float: left;margin-top: -10px;margin-left: 30px">提示：每个回车为一段哦~</span>
     </div>
@@ -95,16 +95,16 @@
         addemoji(emoji){
           this.content = this.content + emoji
         },
-        filess(e){
+        filess(){
           if (this.content==='') {
-            for (let i = 0;i < e.target.files.length;i++){
-              this.imgsrc.push({src:window.URL.createObjectURL(e.target.files[i]),rows:0});
-              this.formdata.append('file',e.target.files[i])
+            for (let i = 0;i < this.$refs.file.files.length;i++){
+              this.imgsrc.push({src:window.URL.createObjectURL(this.$refs.file.files[i]),rows:0});
+              this.formdata.append('file',this.$refs.file.files[i])
             }
           } else{
-            for (let i = 0;i < e.target.files.length;i++){
-              this.imgsrc.push({src:window.URL.createObjectURL(e.target.files[i]),rows:this.content.split('\n').length});
-              this.formdata.append('file',e.target.files[i])
+            for (let i = 0;i < this.$refs.file.length;i++){
+              this.imgsrc.push({src:window.URL.createObjectURL(this.$refs.file.files[i]),rows:this.content.split('\n').length});
+              this.formdata.append('file',this.$refs.file.files[i])
             }
           }
           this.srcshow = true;
@@ -142,7 +142,6 @@
               this.htmlcontent = '<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[f-i-1]+'" style="width: 90%"><br/>' + this.htmlcontent
             }
           }
-          console.log(this.htmlcontent);
         },
         imgsupload(){
           MessageBox.confirm('', {
@@ -165,7 +164,6 @@
                   this.formdata,
                   {headers: {'Content-Type':'multipart/form-data'}}).then(result=>{
                   this.addimg(result.body);
-                  console.log(result.body);
                   Indicator.close();
                   Toast({
                     message:'上传成功!',
