@@ -13,7 +13,7 @@
       <div v-html="newsdetails.htmlcontent" style="padding-bottom: 15px;font-size: 12px;white-space: pre-wrap;"></div>
       <br/><hr/>
       <div>
-        <textarea style="font-size: 12px" placeholder="请输入评论，最多100个字" maxlength="100" rows="3" v-model="content"></textarea>
+        <textarea @click="ishow=false" style="font-size: 12px" placeholder="请输入评论，最多100个字" maxlength="100" rows="3" v-model="content"></textarea>
         <div>
           <span @click="isshow=!isshow" style="font-size: 25px;float: left;margin-top: -10px">😁</span>
           <div v-show="isshow" style="position: absolute;float: left;z-index: 500;background-color: white;margin-bottom: 55px;margin-top: 30px">
@@ -61,7 +61,7 @@
               </p>
               <transition>
                 <div v-if="indexreplyfield===item.id" style="margin-bottom: 0px;margin-left: 5px;margin-right: 5px">
-                  <textarea style="font-size: 12px" maxlength="100" placeholder="回复内容,最多输入100个字" rows="2" v-model="replycontent"></textarea>
+                  <textarea @click="isreplyshow=false" style="font-size: 12px" maxlength="100" placeholder="回复内容,最多输入100个字" rows="2" v-model="replycontent"></textarea>
                   <div class="mui-input-row mui-input-group" v-if="!replynaon" style="margin-top: -10px;margin-bottom: 20px">
                     <label>昵称</label>
                     <input type="text" class="mui-input-clear mui-input" placeholder="请输入昵称最长10个字" maxlength="10" v-model="replyname">
@@ -80,7 +80,7 @@
                       <li v-for="item in emoji" :key="item.id" style="float: left;margin-left: 5px;margin-right: 5px;margin-bottom: 10px">
                         <span @click="addreplyemoji(item.emoji)" style="font-size: 20px">{{item.emoji}}</span>
                       </li>
-                      <span class="glyphicon glyphicon-chevron-up" style="float: left;margin-left: 5px" @click="isshow=!isshow">收起</span>
+                      <span class="glyphicon glyphicon-chevron-up" style="float: left;margin-left: 5px" @click="isreplyshow=!isreplyshow">收起</span>
                     </ul>
                   </div>
                 </div>
@@ -142,7 +142,7 @@
               </p>
               <transition>
                 <div v-if="indexreplyfieldbytime===item.id" style="margin-bottom: 0px;margin-left: 5px;margin-right: 5px">
-                  <textarea style="font-size: 12px" maxlength="50" placeholder="回复内容,最多输入50个字" rows="2" v-model="replycontent"></textarea>
+                  <textarea @click="isreplytimeshow=false" style="font-size: 12px" maxlength="50" placeholder="回复内容,最多输入50个字" rows="2" v-model="replycontent"></textarea>
                   <div class="mui-input-row mui-input-group" v-if="!replynaon" style="margin-top: -10px;margin-bottom: 20px">
                     <label>昵称</label>
                     <input type="text" class="mui-input-clear mui-input" placeholder="请输入昵称最长10个字" maxlength="10" v-model="replyname">
@@ -151,9 +151,19 @@
                   <span style="margin-top: -7px;color: cornflowerblue" @click="indexreplyfieldbytime = -1">
                     <span class="glyphicon glyphicon-arrow-up"></span>收起
                   </span>
+                    <span @click="isreplytimeshow=!isreplytimeshow" style="font-size: 25px;float: left;margin-top: -10px">😁</span>
                     <mt-switch v-model="replynaon" style="margin-top: -25px;margin-bottom: -10px">匿名发布？</mt-switch>
                     <mt-button @click="replybytime(index,item)" style="font-size: 15px;float: right;margin-top: -15px" size="small" type="primary">发送</mt-button>
                   </p>
+                  <div v-show="isreplytimeshow" style="position: absolute;float: left;z-index: 500;background-color: white;margin-bottom: 55px">
+                    <hr style="margin-top: 0px;margin-bottom: 10px"/>
+                    <ul style="list-style: none;padding-left: 0px;padding-bottom: 0px">
+                      <li v-for="item in emoji" :key="item.id" style="float: left;margin-left: 5px;margin-right: 5px;margin-bottom: 10px">
+                        <span @click="addreplytimeemoji(item.emoji)" style="font-size: 20px">{{item.emoji}}</span>
+                      </li>
+                      <span class="glyphicon glyphicon-chevron-up" style="float: left;margin-left: 5px" @click="isreplytimeshow=!isreplytimeshow">收起</span>
+                    </ul>
+                  </div>
                 </div>
               </transition>
               <transition>
@@ -222,6 +232,7 @@
             lastcid:-1,
             isshow:false,
             isreplyshow:false,
+            isreplytimeshow:false,
             emoji:[{id: 1, emoji: '😁'},{id: 2, emoji: '😂'},{id: 3, emoji: '😃'},{id: 4, emoji: '😄'},{id: 5, emoji: '👿'},{id: 6, emoji: '😉'},{id: 7, emoji: '😊'},{id: 8, emoji: '😌'},{id: 9, emoji: '😍'},{id: 10, emoji: '😏'},{id: 11, emoji: '😒'},{id: 12, emoji: '😓'},{id: 13, emoji: '😔'},{id: 14, emoji: '😖'},{id: 15, emoji: '😘'},{id: 16, emoji: '😚'},{id: 17, emoji: '😜'},{id: 18, emoji: '😝'},{id: 19, emoji: '😞'},{id: 20, emoji: '😠'},{id: 21, emoji: '😡'},{id: 22, emoji: '😢'},{id: 23, emoji: '😣'},{id: 24, emoji: '😥'},{id: 25, emoji: '😨'},{id: 26, emoji: '😪'},{id: 27, emoji: '😭'},{id: 28, emoji: '😰'},{id: 29, emoji: '😱'},{id: 30, emoji: '😲'},{id: 31, emoji: '😳'},{id: 32, emoji: '😷'},{id: 33, emoji: '🙃'},{id: 34, emoji: '😋'},{id: 35, emoji: '😗'},{id: 36, emoji: '😛'},{id: 37, emoji: '🤑'},{id: 38, emoji: '🤓'},{id: 39, emoji: '😎'},{id: 40, emoji: '🤗'},{id: 41, emoji: '🙄'},{id: 42, emoji: '🤔'},{id: 43, emoji: '😩'},{id: 44, emoji: '😤'},{id: 45, emoji: '🤐'},{id: 46, emoji: '🤒'}]
           }
         },
@@ -372,7 +383,7 @@
                 uid:this.$route.params.id,
                 name:this.name,
                 content:this.content,
-                time:new Date().toLocaleString(),
+                time:this.getdateformat(),
                 up:0
               },{emulateJSON:true}).then(result=>{
                 this.content = "";
@@ -425,7 +436,7 @@
               cid:item.id,
               name:this.replyname,
               content:this.replycontent,
-              time:new Date().toLocaleString(),
+              time:this.getdateformat(),
             },{emulateJSON:true}).then(result=>{
               this.$http.post('comment/replycountplusonebyid',{
                 id:item.id},{emulateJSON:true}).then(result=>{
@@ -485,7 +496,7 @@
               cid:item.id,
               name:this.replyname,
               content:this.replycontent,
-              time:new Date().toLocaleString(),
+              time:this.getdateformat(),
             },{emulateJSON:true}).then(result=>{
               this.$http.post('comment/replycountplusonebyid',{
                 id:item.id},{emulateJSON:true}).then(result=>{
@@ -763,6 +774,25 @@
         },
         addreplyemoji(emoji){
           this.replycontent = this.replycontent + emoji
+        },
+        addreplytimeemoji(emoji){
+          this.replycontent = this.replycontent + emoji
+        },
+        getdateformat(){
+          let date=new Date();
+          let seconds = date.getSeconds();
+          let hours = date.getHours();
+          let minutes = date.getMinutes();
+          if (seconds < 10) {
+            seconds = '0' + seconds
+          }
+          if (hours < 10){
+            hours = '0' + hours
+          }
+          if (minutes < 10) {
+            minutes = '0' + minutes
+          }
+          return date.getFullYear()+'/'+date.getMonth()+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
         }
       }
     }

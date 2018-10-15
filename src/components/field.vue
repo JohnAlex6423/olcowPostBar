@@ -1,4 +1,4 @@
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
+<template>
   <div style="margin-right: 5px;margin-left: 5px">
     <label style="margin-top: 10px">标题</label>
     <textarea @click="isshow=false" placeholder="输入标题，最多30个字" maxlength="30" v-model="name"></textarea>
@@ -102,7 +102,7 @@
               this.formdata.append('file',this.$refs.file.files[i])
             }
           } else{
-            for (let i = 0;i < this.$refs.file.length;i++){
+            for (let i = 0;i < this.$refs.file.files.length;i++){
               this.imgsrc.push({src:window.URL.createObjectURL(this.$refs.file.files[i]),rows:this.content.split('\n').length});
               this.formdata.append('file',this.$refs.file.files[i])
             }
@@ -132,14 +132,14 @@
             if (this.imgsrc[i].rows === 0){
               f++;
             } else if (this.imgsrc[i].rows === this.content.split('\n').length) {
-              this.htmlcontent = this.htmlcontent + '<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[i]+'" style="width: 90%"><br/>';
+              this.htmlcontent = this.htmlcontent + '<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[i]+'" style="width: 100%"><br/>';
             } else {
-              this.htmlcontent = this.htmlcontent.substring(0,this.findchar(this.htmlcontent,'\n',this.imgsrc[i].rows-1)) +'<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[i]+'" style="width: 90%"><br/>' + this.htmlcontent.substring(this.findchar(this.htmlcontent,'\n',this.imgsrc[i].rows-1))
+              this.htmlcontent = this.htmlcontent.substring(0,this.findchar(this.htmlcontent,'\n',this.imgsrc[i].rows-1)) +'<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[i]+'" style="width: 100%"><br/>' + this.htmlcontent.substring(this.findchar(this.htmlcontent,'\n',this.imgsrc[i].rows-1))
             }
           }
           if (f > 0){
             for (let i = 0;i < f;i++){
-              this.htmlcontent = '<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[f-i-1]+'" style="width: 90%"><br/>' + this.htmlcontent
+              this.htmlcontent = '<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[f-i-1]+'" style="width: 100%"><br/>' + this.htmlcontent
             }
           }
         },
@@ -178,7 +178,7 @@
                       click:0,
                       content:this.content.substring(0,30),
                       htmlcontent:this.htmlcontent,
-                      time:new Date().toLocaleString(),
+                      time:this.getdateformat(),
                       isimg:0,
                       imgsrc:'0'}, {emulateJSON:true}).then(result=>{
                       this.refresh();
@@ -206,7 +206,7 @@
                       click:0,
                       content:this.content.substring(0,30),
                       htmlcontent:this.htmlcontent,
-                      time:new Date().toLocaleString(),
+                      time:this.getdateformat(),
                       isimg:1,
                       imgsrc:'http://123.206.93.200/uploadimg/'+result.body[0]}, {emulateJSON:true}).then(result=>{
                       this.refresh();
@@ -241,6 +241,22 @@
             if (err == 'cancel') {     //取消的回调
             }
           });
+        },
+        getdateformat(){
+          let date=new Date();
+          let seconds = date.getSeconds();
+          let hours = date.getHours();
+          let minutes = date.getMinutes();
+          if (seconds < 10) {
+            seconds = '0' + seconds
+          }
+          if (hours < 10){
+            hours = '0' + hours
+          }
+          if (minutes < 10) {
+            minutes = '0' + minutes
+          }
+          return date.getFullYear()+'/'+date.getMonth()+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
         }
       },
       watch:{

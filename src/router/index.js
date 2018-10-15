@@ -17,7 +17,8 @@ export default new Router({
     },{
       path:'/home',
       name: 'home',
-      component:home,
+      // component:home,
+      component: resolve=>require(['@/components/home'],resolve),
       meta: {
         keepAlive:true,
         isshow:true,
@@ -26,7 +27,8 @@ export default new Router({
     },{
       path:'/field',
       name:'field',
-      component:field,
+      // component:field,
+      component: resolve=>require(['@/components/field'],resolve),
       meta: {
         keepAlive:true,
         isshow:true,
@@ -35,7 +37,8 @@ export default new Router({
     },{
       path: '/shopping',
       name: 'shopping',
-      component:shopping,
+      // component:shopping,
+      component: resolve=>require(['@/components/shopping'],resolve),
       meta: {
         keepAlive:true,
         isshow:true,
@@ -44,7 +47,8 @@ export default new Router({
     },{
       path: '/setting',
       name: 'setting',
-      component:setting,
+      // component:setting,
+      component: resolve=>require(['@/components/setting'],resolve),
       meta: {
         keepAlive:true,
         isshow:true,
@@ -52,19 +56,25 @@ export default new Router({
       }
     },{
       path: '/home/newsinfobyid/:id',
-      component:newsinfobyid,
+      name: 'newsinfobyid',
+      // component:newsinfobyid,
+      component: resolve=>require(['@/components/newsinfobyid'],resolve),
       meta:{
         isshow:false
       }
     },{
       path: '/expansion',
-      component:expansion,
+      name: 'expansion',
+      // component:expansion,
+      component: resolve=>require(['@/components/expansion'],resolve),
       meta:{
         isshow:false
       }
     },{
       path: '/egg',
-      component:egg,
+      name: 'egg',
+      // component:egg,
+      component: resolve=>require(['@/components/egg'],resolve),
       meta:{
         inshow:false
       }
