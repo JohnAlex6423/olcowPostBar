@@ -228,7 +228,7 @@
                   }
                 },result=>{
                   Toast({
-                    message:'上传失败!请重试',
+                    message:'上传失败!请不要选择大于5M的图片!',
                     duration: 2000,
                     iconClass: 'glyphicon glyphicon-remove'
                   });
@@ -256,7 +256,7 @@
           if (minutes < 10) {
             minutes = '0' + minutes
           }
-          return date.getFullYear()+'/'+date.getMonth()+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
+          return date.getFullYear()+'/'+date.getMonth()+1+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
         }
       },
       watch:{

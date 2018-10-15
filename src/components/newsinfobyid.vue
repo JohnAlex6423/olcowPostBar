@@ -792,7 +792,7 @@
           if (minutes < 10) {
             minutes = '0' + minutes
           }
-          return date.getFullYear()+'/'+date.getMonth()+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
+          return date.getFullYear()+'/'+date.getMonth()+1+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
         }
       }
     }
