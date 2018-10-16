@@ -1,21 +1,18 @@
 # 基于VUE框架的移动端帖子系统
 
-> A Vue.js project
+> 链接：[http://olcow.com](http://olcow.com)
 
-## Build Setup
+## 纯属个人学习制作，如果喜欢加个star吧，谢谢！
 
-``` bash
-# install dependencies
-npm install
+## 后端搭使用springboot，感兴趣的也可以发
 
-# serve with hot reload at localhost:8080
-npm run dev
+## 主页界面
 
-# build for production with minification
-npm run build
+![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/home.gif)
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+## 发帖界面
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/field.gif)
+
+## 如果其中的想法帮到你了，就打赏一波吧
+![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/zhifubao.jpg)
