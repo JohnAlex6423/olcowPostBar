@@ -16,6 +16,9 @@
       <div v-show="qrisshow"  style="align-content: center">
         <p id="qrcode" style="width: 100px;height: 100px;margin: 0 auto"></p>
         <p v-if="qrisshow">本文链接: http://olcow.com/#{{this.$route.path}}</p>
+        <a v-clipboard:copy="'olcow主题帖:'+newsdetails.name+'  链接:http://olcow.com/#'+this.$route.path+'   快来评论吧~'"
+           v-clipboard:success="onCopy"
+           v-clipboard:error="onError">点击复制</a>
       </div>
       <hr/>
       <div>
@@ -241,6 +244,7 @@
             isreplyshow:false,
             isreplytimeshow:false,
             qrisshow:false,
+            copya: 'http://olcow.com/#'+this.$route.path,
             emoji:[{id: 1, emoji: '😁'},{id: 2, emoji: '😂'},{id: 3, emoji: '😃'},{id: 4, emoji: '😄'},{id: 5, emoji: '👿'},{id: 6, emoji: '😉'},{id: 7, emoji: '😊'},{id: 8, emoji: '😌'},{id: 9, emoji: '😍'},{id: 10, emoji: '😏'},{id: 11, emoji: '😒'},{id: 12, emoji: '😓'},{id: 13, emoji: '😔'},{id: 14, emoji: '😖'},{id: 15, emoji: '😘'},{id: 16, emoji: '😚'},{id: 17, emoji: '😜'},{id: 18, emoji: '😝'},{id: 19, emoji: '😞'},{id: 20, emoji: '😠'},{id: 21, emoji: '😡'},{id: 22, emoji: '😢'},{id: 23, emoji: '😣'},{id: 24, emoji: '😥'},{id: 25, emoji: '😨'},{id: 26, emoji: '😪'},{id: 27, emoji: '😭'},{id: 28, emoji: '😰'},{id: 29, emoji: '😱'},{id: 30, emoji: '😲'},{id: 31, emoji: '😳'},{id: 32, emoji: '😷'},{id: 33, emoji: '🙃'},{id: 34, emoji: '😋'},{id: 35, emoji: '😗'},{id: 36, emoji: '😛'},{id: 37, emoji: '🤑'},{id: 38, emoji: '🤓'},{id: 39, emoji: '😎'},{id: 40, emoji: '🤗'},{id: 41, emoji: '🙄'},{id: 42, emoji: '🤔'},{id: 43, emoji: '😩'},{id: 44, emoji: '😤'},{id: 45, emoji: '🤐'},{id: 46, emoji: '🤒'}]
           }
         },
@@ -791,6 +795,7 @@
           let seconds = date.getSeconds();
           let hours = date.getHours();
           let minutes = date.getMinutes();
+          let month = date.getMonth() +1;
           if (seconds < 10) {
             seconds = '0' + seconds
           }
@@ -800,7 +805,7 @@
           if (minutes < 10) {
             minutes = '0' + minutes
           }
-          return date.getFullYear()+'/'+date.getMonth()+1+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
+          return date.getFullYear()+'/'+month+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
         },
         qrcode(){
           let qrcode = new QRCode('qrcode',{
@@ -809,6 +814,18 @@
             text: 'http://olcow.com/#'+this.$route.fullPath
           });
           this.qrisshow = true;
+        },
+        onCopy(e) {
+          Toast({
+            message:'已经复制到剪贴板直接复制到任何地方',
+            duration: 1000
+          })
+        },
+        onError(e) {
+          Toast({
+            message:'复制失败!请重试',
+            duration: 1000
+          })
         }
       }
     }

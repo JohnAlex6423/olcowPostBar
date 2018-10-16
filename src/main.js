@@ -7,7 +7,7 @@ import 'bootstrap-3.3.7-dist/css/bootstrap.css'
 import {Button,Header,Tabbar,TabItem,Swipe,SwipeItem,Field,Switch,Popup,Loadmore,Actionsheet,Lazyload} from 'mint-ui'
 import 'mui/dist/css/mui.css'
 import VueResource from 'vue-resource'
-
+import VueClipboard from 'vue-clipboard2'
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
@@ -23,6 +23,7 @@ Vue.component('popup', Popup);
 Vue.component('mtLoadmore', Loadmore);
 Vue.component('mtActionsheet', Actionsheet);
 
+Vue.use(VueClipboard);
 Vue.use(Lazyload);
 Vue.use(VueResource);
 Vue.http.options.root = 'http://47.93.239.37:8080/';

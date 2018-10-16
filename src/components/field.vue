@@ -247,6 +247,7 @@
           let seconds = date.getSeconds();
           let hours = date.getHours();
           let minutes = date.getMinutes();
+          let month = date.getMonth() +1;
           if (seconds < 10) {
             seconds = '0' + seconds
           }
@@ -256,7 +257,7 @@
           if (minutes < 10) {
             minutes = '0' + minutes
           }
-          return date.getFullYear()+'/'+date.getMonth()+1+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
+          return date.getFullYear()+'/'+month+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
         }
       },
       watch:{
