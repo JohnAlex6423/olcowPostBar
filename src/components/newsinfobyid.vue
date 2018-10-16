@@ -9,9 +9,15 @@
         <span v-if="!isbule" style="font-size: 15px" @click="upplus">👍{{newsdetails.up}}</span>
       </p>
       <hr/>
-      <!--<div style="font-size: 12px;white-space: pre-wrap;">{{newsdetails.content}}</div>-->
-      <div v-html="newsdetails.htmlcontent" style="padding-bottom: 15px;font-size: 12px;white-space: pre-wrap;"></div>
-      <br/><hr/>
+      <div v-html="newsdetails.htmlcontent" style="padding-bottom: 15px;font-size: 15px;white-space: pre-wrap;"></div>
+      <br/>
+      <a v-if="!qrisshow" @click="qrcode">分享</a>
+      <p v-if="qrisshow">分享给你的朋友们吧</p>
+      <div v-show="qrisshow"  style="align-content: center">
+        <p id="qrcode" style="width: 100px;height: 100px;margin: 0 auto"></p>
+        <p v-if="qrisshow">本文链接: http://olcow.com/#{{this.$route.path}}</p>
+      </div>
+      <hr/>
       <div>
         <textarea @click="ishow=false" style="font-size: 12px" placeholder="请输入评论，最多100个字" maxlength="100" rows="3" v-model="content"></textarea>
         <div>
@@ -202,6 +208,7 @@
 </template>
 
 <script>
+  import QRCode from 'qrcodejs2'
   import { Toast,Indicator } from 'mint-ui'
     export default {
         name:'vm',
@@ -233,6 +240,7 @@
             isshow:false,
             isreplyshow:false,
             isreplytimeshow:false,
+            qrisshow:false,
             emoji:[{id: 1, emoji: '😁'},{id: 2, emoji: '😂'},{id: 3, emoji: '😃'},{id: 4, emoji: '😄'},{id: 5, emoji: '👿'},{id: 6, emoji: '😉'},{id: 7, emoji: '😊'},{id: 8, emoji: '😌'},{id: 9, emoji: '😍'},{id: 10, emoji: '😏'},{id: 11, emoji: '😒'},{id: 12, emoji: '😓'},{id: 13, emoji: '😔'},{id: 14, emoji: '😖'},{id: 15, emoji: '😘'},{id: 16, emoji: '😚'},{id: 17, emoji: '😜'},{id: 18, emoji: '😝'},{id: 19, emoji: '😞'},{id: 20, emoji: '😠'},{id: 21, emoji: '😡'},{id: 22, emoji: '😢'},{id: 23, emoji: '😣'},{id: 24, emoji: '😥'},{id: 25, emoji: '😨'},{id: 26, emoji: '😪'},{id: 27, emoji: '😭'},{id: 28, emoji: '😰'},{id: 29, emoji: '😱'},{id: 30, emoji: '😲'},{id: 31, emoji: '😳'},{id: 32, emoji: '😷'},{id: 33, emoji: '🙃'},{id: 34, emoji: '😋'},{id: 35, emoji: '😗'},{id: 36, emoji: '😛'},{id: 37, emoji: '🤑'},{id: 38, emoji: '🤓'},{id: 39, emoji: '😎'},{id: 40, emoji: '🤗'},{id: 41, emoji: '🙄'},{id: 42, emoji: '🤔'},{id: 43, emoji: '😩'},{id: 44, emoji: '😤'},{id: 45, emoji: '🤐'},{id: 46, emoji: '🤒'}]
           }
         },
@@ -793,6 +801,14 @@
             minutes = '0' + minutes
           }
           return date.getFullYear()+'/'+date.getMonth()+1+'/'+date.getDate()+' '+hours+':'+minutes+':'+seconds
+        },
+        qrcode(){
+          let qrcode = new QRCode('qrcode',{
+            width: 100,
+            height: 100,
+            text: 'http://olcow.com/#'+this.$route.fullPath
+          });
+          this.qrisshow = true;
         }
       }
     }
@@ -804,9 +820,5 @@
   }
   li{
     list-style: none;
-  }
-  img{
-    width: 100%;
-    height: 100%;
   }
 </style>

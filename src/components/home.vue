@@ -79,7 +79,7 @@
             </p>
           </div>
         </router-link>
-        <img class="yourclass" v-if="item.isimg===1" v-lazy="item.imgsrc">
+        <img class="yourclass" v-if="item.isimg===1" v-lazy="item.imgsrc" style="box-shadow: 1px 1px 10px gray;">
       </li>
     </ul>
     <mt-button type="primary" plain style="margin-top: 10px" size="large" @click="getmore">点击加载更多</mt-button>
@@ -107,8 +107,7 @@
             scrollTop: 0,
             time: 0,
             dParams: 20,
-            scrollState: 0,
-            lazysrc:["http://123.206.93.200/images/轮播图1.jpg","http://123.206.93.200/images/轮播图2.jpg","http://123.206.93.200/images/轮播图3.jpg"]
+            scrollState: 0
           }
         },
       created(){

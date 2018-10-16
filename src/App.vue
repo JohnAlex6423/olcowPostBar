@@ -1,14 +1,9 @@
 <template>
   <div id="app" class="app-container">
-    <!--<mt-header fixed title="测试别当真">-->
-      <!--<router-link to="/" slot="left">-->
-        <!--<mt-button icon="back">返回</mt-button>-->
-      <!--</router-link>-->
-      <!--<mt-button icon="more" slot="right"></mt-button>-->
-    <!--</mt-header>-->
     <header id="header" class="mui-bar mui-bar-nav" style="z-index: 999">
       <a @click="back" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
       <h1 class="mui-title">有问题请反馈</h1>
+      <a @click="backhome" class="mui-action-back mui-icon mui-icon-home mui-pull-right"></a>
     </header>
     <transition>
       <keep-alive>
@@ -42,12 +37,22 @@
 </template>
 
 <script>
-
+  import {Toast} from 'mint-ui';
 export default {
   name: 'App',
   methods:{
     back(){
       this.$router.go(-1)
+    },
+    backhome(){
+      if (this.$route.fullPath === '/home') {
+        Toast({
+          message: '你已经在主页了',
+          duration: 500
+        })
+      } else {
+        this.$router.push('/home')
+      }
     }
   }
 }

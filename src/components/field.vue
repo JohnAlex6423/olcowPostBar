@@ -132,14 +132,14 @@
             if (this.imgsrc[i].rows === 0){
               f++;
             } else if (this.imgsrc[i].rows === this.content.split('\n').length) {
-              this.htmlcontent = this.htmlcontent + '<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[i]+'" style="width: 100%"><br/>';
+              this.htmlcontent = this.htmlcontent + '<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[i]+'" style="width: 100%;box-shadow: 1px 1px 10px gray;margin-top: 10px;margin-bottom: 10px"><br/>';
             } else {
-              this.htmlcontent = this.htmlcontent.substring(0,this.findchar(this.htmlcontent,'\n',this.imgsrc[i].rows-1)) +'<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[i]+'" style="width: 100%"><br/>' + this.htmlcontent.substring(this.findchar(this.htmlcontent,'\n',this.imgsrc[i].rows-1))
+              this.htmlcontent = this.htmlcontent.substring(0,this.findchar(this.htmlcontent,'\n',this.imgsrc[i].rows-1)) +'<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[i]+'" style="width: 100%;box-shadow: 1px 1px 10px gray;margin-top: 10px;margin-bottom: 10px"><br/>' + this.htmlcontent.substring(this.findchar(this.htmlcontent,'\n',this.imgsrc[i].rows-1))
             }
           }
           if (f > 0){
             for (let i = 0;i < f;i++){
-              this.htmlcontent = '<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[f-i-1]+'" style="width: 100%"><br/>' + this.htmlcontent
+              this.htmlcontent = '<br/><img src="'+'http://123.206.93.200/uploadimg/'+n[f-i-1]+'" style="width: 100%;box-shadow: 1px 1px 10px gray;margin-top: 10px;margin-bottom: 10px"><br/>' + this.htmlcontent
             }
           }
         },
@@ -282,5 +282,6 @@
 <style scoped>
   img{
     height: 100px;
+    box-shadow: 1px 1px 10px gray
   }
 </style>
