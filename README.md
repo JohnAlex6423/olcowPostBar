@@ -1,4 +1,4 @@
-# vuedemo01
+# 基于VUE框架的移动端帖子系统
 
 > A Vue.js project
 
