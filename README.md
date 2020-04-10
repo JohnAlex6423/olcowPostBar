@@ -1,20 +1,18 @@
-# »ùÓÚVUE¿ò¼ÜµÄÒÆ¶¯¶ËÌû×ÓÏµÍ³
+# åŸºäºVUEæ¡†æ¶çš„ç§»åŠ¨ç«¯å¸–å­ç³»ç»Ÿ
 
-## Á´½Ó£º[http://olcow.com](http://olcow.com)
+### çº¯å±ä¸ªäººå­¦ä¹ åˆ¶ä½œï¼Œå¦‚æœå–œæ¬¢åŠ ä¸ªstarå§ï¼Œè°¢è°¢ï¼
 
-### ´¿Êô¸öÈËÑ§Ï°ÖÆ×÷£¬Èç¹ûÏ²»¶¼Ó¸östar°É£¬Ğ»Ğ»£¡
+### åç«¯æ­ä½¿ç”¨springbootï¼Œæ„Ÿå…´è¶£çš„ä¹Ÿå¯ä»¥å‘
 
-### ºó¶Ë´îÊ¹ÓÃspringboot£¬¸ĞĞËÈ¤µÄÒ²¿ÉÒÔ·¢
-
-## Ö÷Ò³½çÃæ
+## ä¸»é¡µç•Œé¢
 
 ![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/home.gif)
 
-## ·¢Ìû½çÃæ
+## å‘å¸–ç•Œé¢
 
 ![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/field.gif)
 
-## Èç¹ûÆäÖĞµÄÏë·¨°ïµ½ÄãÁË£¬¾Í´òÉÍÒ»²¨°É
+## å¦‚æœå…¶ä¸­çš„æƒ³æ³•å¸®åˆ°ä½ äº†ï¼Œå°±æ‰“èµä¸€æ³¢å§
 ![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/zhifubao.jpg)
 ##
 ![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/hongbao.png)
