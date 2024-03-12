@@ -11,8 +11,3 @@
 ## 发帖界面
 
 ![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/field.gif)
-
-## 如果其中的想法帮到你了，就打赏一波吧
-![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/zhifubao.jpg)
-##
-![image](https://raw.githubusercontent.com/JohnAlex6423/olcowPostBar/master/mdimage/hongbao.png)
